@@ -1,25 +1,15 @@
 # == Class: gitweb
 #
-# Full description of class gitweb here.
+# Installs a gitolite and gitweb server that uses ssh to connect for read write and a website for browsing the repos
 #
 # === Parameters
+# 
+# [git_root]
+#   root directory for the repository.
+#     Defaults to the git users home direcotry (/home/git)
 #
-# Document parameters here.
-#
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
-#
-# === Variables
-#
-# Here you should define a list of variables that this module would require.
-#
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if
-#   it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should be avoided in favor of class parameters as
-#   of Puppet 2.6.)
+# [git_key]
+#   administrators public ssh key for setting up the system
 #
 # === Examples
 #
@@ -29,17 +19,20 @@
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Jason Cox <j_cox@bigpond.com>
 #
 # === Copyright
 #
-# Copyright 2014 Your name here, unless otherwise noted.
+# Copyright 2014 Jason Cox, unless otherwise noted.
 #
 class gitweb (
   $git_home = '/home/git',
-  $git_key  = 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAwh7mlPNf1YTGMyLDL17ZGHbpnW5NMNUSNT8rDYWsLjPd53AAEcFYWkHf8fTSWHL7nABgusZ0CU/EXCeqEV4Je+xT0U8WDOKz3BoTLPwT0uF8eDvvnpUg0WEpnMFyAAfXT2QoEMPO8YTqrYqGNxZTfl9bclcFu+3pK9mxTx1Fg7QMl9qRkAQjDRy17yB0eN7CV//waOaezDUT18heyW9C6ZLxTO4XHQ+ditIjozuRYsnX3LARBIhI1PUF9ap4g3u44bftspWA01CrFQgIis+e/t7vKyR72P3RzG5HgYBPiSDbixSKosjBCERx5/XHxxa0/4R4xsRZF099z2dECinpEw== root@pmslap71-linux',
+  $git_key  = undef,
 
 ){
+  if ( $git_key == undef){
+    fail("missing administrators key for gitolite")
+  }
   $git_root = "${git_home}/repositories"
   $hook     = "${git_home}/.gitolite/hooks/common"
 

@@ -1,11 +1,11 @@
-name    'jlcox1970-gitweb'
+name    'jlcox-gitweb'
 version '0.1.0'
-source 'UNKNOWN'
+source 'https://github.com/jlcox1970/gitweb.git'
 author 'jlcox1970'
 license 'Apache License, Version 2.0'
 summary 'Install and setup gitweb'
-description 'UNKNOWN'
-project_page 'UNKNOWN'
+description 'Installs Gitolite3 and gitweb onto a server so that you can have a local git server'
+project_page 'https://github.com/jlcox1970/gitweb'
 
 ## Add dependencies, if any:
 # dependency 'username/name', '>= 1.2.0'
