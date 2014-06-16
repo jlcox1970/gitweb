@@ -39,6 +39,10 @@ class gitweb (
   $git_home        = '/home/git',
   $auto_tag_serial = false,
 ){
+ 
+  $git_root = "${git_home}/repositories"
+  $hook     = "${git_home}/.gitolite/hooks/common"
+ 
   if ( $git_key == undef){
     fail("missing administrators key for gitolite")
   }
@@ -51,14 +55,11 @@ class gitweb (
   } else {
     @file {'remove hook post-receive-commitnumbers':
       name   => "${hook}/post-receive-commitnumbers",
-      ensure => purged,
+      ensure => absent,
       tag    => 'auto_tag_serial'
     }
   }
  
-  $git_root = "${git_home}/repositories"
-  $hook     = "${git_home}/.gitolite/hooks/common"
-
   include epel
 
   Package{
