@@ -51,8 +51,10 @@ class gitweb (
   package {'gitolite' : } ->
   package {'gitolite3' : } ->
   user { 'git' :
-    comment  => 'git user',
-    home => $git_home,
+    comment    => 'git user',
+    ensure     => present,
+    managehome => true,
+    home       => $git_home,
   } ->
   file {"${git_home}/install.pub" :
     content => $git_key,
