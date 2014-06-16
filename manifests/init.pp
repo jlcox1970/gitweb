@@ -4,17 +4,24 @@
 #
 # === Parameters
 # 
-# [git_root]
+# [git_key]
+#   administrators public ssh key for setting up the system
+#
+# [admin_user]
+#   name for the above key
+#
+# [git_key_type]
+#   The type of key for the administrator (defaults to ssh-rsa)
+#
+# [git_home]
 #   root directory for the repository.
 #     Defaults to the git users home direcotry (/home/git)
 #
-# [git_key]
-#   administrators public ssh key for setting up the system
 #
 # === Examples
 #
 #  class { gitweb:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
+#     git_key => 'some key val',
 #  }
 #
 # === Authors
@@ -26,13 +33,23 @@
 # Copyright 2014 Jason Cox, unless otherwise noted.
 #
 class gitweb (
-  $git_home = '/home/git',
-  $git_key  = undef,
-
+  $git_key         = undef,
+  $admin_user      = 'admin',
+  $git_key_type    = 'ssh-rsa',
+  $git_home        = '/home/git',
+  $auto_tag_serial = false,
 ){
   if ( $git_key == undef){
     fail("missing administrators key for gitolite")
   }
+  if ( $auto_tag_serial == true ){}
+    @file {'hook post-receive-commitnumbers':
+      name    => "${hook}/post-receive-commitnumbers",
+      content => template("${module_name}/post-receive-commitnumbers.erb"),
+      tag     => 'auto_tag_serial'
+    }
+  }
+ 
   $git_root = "${git_home}/repositories"
   $hook     = "${git_home}/.gitolite/hooks/common"
 
@@ -57,7 +74,7 @@ class gitweb (
     home       => $git_home,
   } ->
   file {"${git_home}/install.pub" :
-    content => $git_key,
+    content => "${git_key_type} ${git_key} ${admin_user}",
     owner   => 'git',
     group   => 'git',
   } ->
@@ -87,10 +104,7 @@ class gitweb (
     name    => "${hook}/post-receive",
     content => template("${module_name}/post-receive.erb"),
   } ->
-  file {'hook post-receive-commitnumbers':
-    name    => "${hook}/post-receive-commitnumbers",
-    content => template("${module_name}/post-receive-commitnumbers.erb"),
-  } ->
+  File <| tag == 'auto_tag_serial' |> ->
   service {'httpd':
     ensure => true,
     enable => true,
