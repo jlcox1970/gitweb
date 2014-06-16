@@ -3,7 +3,7 @@
   "checksums": {
     "templates/post-receive.erb": "b87d1ada6fdba6a300b0c8a180b2ab79",
     "templates/gitweb.cgi.erb-old": "4633dfd8df7af22430d2fe312e57d35a",
-    "manifests/init.pp": "2334677ac9f3c957da121469fd83d6c5",
+    "manifests/init.pp": "46bba3c76c094e0cef0f1c79ce49b0de",
     "templates/gitweb.cgi.erb": "0ec630216d18827d43b3bfb83613455b",
     "templates/functions.erb": "7f1a72d87cfd3a685a780c712a830e28",
     "README": "f25b29323180d3fa95da4673712f6289",

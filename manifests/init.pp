@@ -102,6 +102,7 @@ class gitweb (
     path    => '/usr/bin:/bin',
     command => "${git_home}/setup.sh",
     user    => 'git',
+    creates => '.gitolite'
   } -> 
   file {'hook functions':
     name    => "${hook}/functions",
