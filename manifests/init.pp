@@ -17,6 +17,8 @@
 #   root directory for the repository.
 #     Defaults to the git users home direcotry (/home/git)
 #
+# [auto_tag_serial]
+#   Adds an auto incrimental serial tag to each commit
 #
 # === Examples
 #
@@ -102,7 +104,7 @@ class gitweb (
     path    => '/usr/bin:/bin',
     command => "${git_home}/setup.sh",
     user    => 'git',
-    creates => '.gitolite'
+    creates => "${git_home}/.gitolite"
   } -> 
   file {'hook functions':
     name    => "${hook}/functions",
