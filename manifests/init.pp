@@ -42,11 +42,17 @@ class gitweb (
   if ( $git_key == undef){
     fail("missing administrators key for gitolite")
   }
-  if ( $auto_tag_serial == true ){}
+  if ( $auto_tag_serial == true ){
     @file {'hook post-receive-commitnumbers':
       name    => "${hook}/post-receive-commitnumbers",
       content => template("${module_name}/post-receive-commitnumbers.erb"),
       tag     => 'auto_tag_serial'
+    }
+  } else {
+    @file {'remove hook post-receive-commitnumbers':
+      name   => "${hook}/post-receive-commitnumbers",
+      ensure => purged,
+      tag    => 'auto_tag_serial'
     }
   }
  
