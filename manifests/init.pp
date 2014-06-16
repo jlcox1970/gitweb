@@ -50,9 +50,9 @@ class gitweb (
   package {'httpd': } ->
   package {'gitolite' : } ->
   package {'gitolite3' : } ->
-  account { 'git' :
+  user { 'git' :
     comment  => 'git user',
-    home_dir => $git_home,
+    home => $git_home,
   } ->
   file {"${git_home}/install.pub" :
     content => $git_key,
