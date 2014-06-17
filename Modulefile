@@ -9,4 +9,4 @@ project_page 'https://github.com/jlcox1970/gitweb'
 
 ## Add dependencies, if any:
 # dependency 'username/name', '>= 1.2.0'
-dependency 'stahnma/epel', '> 0.0.6'
+dependency 'stahnma/epel', '>= 0.0.6'

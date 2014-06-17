@@ -1,4 +1,24 @@
 {
+  "requirements": [
+    { "name": "pe", "version_requirement": "3.2.x" },
+    { "name": "puppet", "version_requirement": "3.x" }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+        "operatingsystemrelease": [
+          "5",
+          "6"
+        ]
+    }
+  ],
   "author": "jlcox1970",
   "checksums": {
     "templates/post-receive.erb": "b87d1ada6fdba6a300b0c8a180b2ab79",
@@ -9,14 +29,14 @@
     "README": "f25b29323180d3fa95da4673712f6289",
     "templates/setup.sh.erb": "6d614fb5a7ff199f2bf64c9def6358e7",
     "templates/post-receive-commitnumbers.erb": "ba68551f72d3b63e1c248b903968343a",
-    "Modulefile": "91fd432f6e8da34991f4d7b99d5411e8",
+    "Modulefile": "575f7c04f8cf8829e99f6ddc34d1e91a",
     "tests/init.pp": "0c5521986fb655af136dbf0317653240",
     "spec/spec_helper.rb": "a55d1e6483344f8ec6963fcb2c220372"
   },
   "dependencies": [
     {
       "name": "stahnma/epel",
-      "version_requirement": "\u003e 0.0.6"
+      "version_requirement": ">= 0.0.6"
     }
   ],
   "description": "Installs Gitolite3 and gitweb onto a server so that you can have a local git server",
