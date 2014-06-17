@@ -9,7 +9,7 @@
     "README": "f25b29323180d3fa95da4673712f6289",
     "templates/setup.sh.erb": "6d614fb5a7ff199f2bf64c9def6358e7",
     "templates/post-receive-commitnumbers.erb": "ba68551f72d3b63e1c248b903968343a",
-    "Modulefile": "93cd35988523e9e1e9f9af3bec109527",
+    "Modulefile": "91fd432f6e8da34991f4d7b99d5411e8",
     "tests/init.pp": "0c5521986fb655af136dbf0317653240",
     "spec/spec_helper.rb": "a55d1e6483344f8ec6963fcb2c220372"
   },
@@ -26,5 +26,5 @@
   "source": "https://github.com/jlcox1970/gitweb.git",
   "summary": "Install and setup gitweb",
   "types": [],
-  "version": "0.1.0"
+  "version": "1.0.0"
 }
