@@ -1,5 +1,5 @@
 name    'jlcox-gitweb'
-version '1.0.0'
+version '1.0.1'
 source 'https://github.com/jlcox1970/gitweb.git'
 author 'jlcox1970'
 license 'Apache License, Version 2.0'
