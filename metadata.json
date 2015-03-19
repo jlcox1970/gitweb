@@ -20,31 +20,13 @@
     }
   ],
   "author": "jlcox1970",
-  "checksums": {
-    "templates/post-receive.erb": "b87d1ada6fdba6a300b0c8a180b2ab79",
-    "templates/gitweb.cgi.erb-old": "4633dfd8df7af22430d2fe312e57d35a",
-    "manifests/init.pp": "9ad6ac5693b2dac9944ad7c034a0b6d6",
-    "templates/gitweb.cgi.erb": "0ec630216d18827d43b3bfb83613455b",
-    "templates/functions.erb": "7f1a72d87cfd3a685a780c712a830e28",
-    "README": "f25b29323180d3fa95da4673712f6289",
-    "templates/setup.sh.erb": "6d614fb5a7ff199f2bf64c9def6358e7",
-    "templates/post-receive-commitnumbers.erb": "ba68551f72d3b63e1c248b903968343a",
-    "Modulefile": "575f7c04f8cf8829e99f6ddc34d1e91a",
-    "tests/init.pp": "0c5521986fb655af136dbf0317653240",
-    "spec/spec_helper.rb": "a55d1e6483344f8ec6963fcb2c220372"
-  },
   "dependencies": [
-    {
-      "name": "stahnma/epel",
-      "version_requirement": ">= 0.0.6"
-    }
+    { "name": "stahnma/epel", "version_requirement": ">= 0.0.6" }
   ],
-  "description": "Installs Gitolite3 and gitweb onto a server so that you can have a local git server",
   "license": "Apache License, Version 2.0",
   "name": "jlcox-gitweb",
   "project_page": "https://github.com/jlcox1970/gitweb",
   "source": "https://github.com/jlcox1970/gitweb.git",
-  "summary": "Install and setup gitweb",
-  "types": [],
-  "version": "1.0.1"
+  "summary": "Installs Gitolite3 and gitweb onto a server so that you can have a local git server",
+  "version": "1.0.2"
 }
