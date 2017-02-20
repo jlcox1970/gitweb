@@ -41,6 +41,8 @@ class gitweb (
   $git_key_type      = 'ssh-rsa',
   $git_home          = '/home/git',
   $auto_tag_serial   = false,
+  $cgi_bin_dir       = '/var/www/git',
+  $repo_umask        = '0077',
 ){
 
   $git_root = "${git_home}/repositories"
@@ -101,7 +103,7 @@ class gitweb (
     group   => 'git',
   } ->
   file {'gitweb config':
-    name    => '/var/www/git/gitweb.cgi',
+    name    => "$cgi_bin_dir/gitweb.cgi",
     content => template("${module_name}/gitweb.cgi.erb"),
     notify  => Service['httpd'],
     owner   => 'root',
@@ -131,6 +133,12 @@ class gitweb (
   file {'hook post-receive':
     name    => "${hook}/post-receive",
     content => template("${module_name}/post-receive.erb"),
+  } ->
+  file_line { 'Gitolite config':
+    ensure => present,
+    path   => "$git_home/.gitolite.rc",
+    line   => "UMASK => $repo_umask",
+    match  => '^UMASK',
   } ->
   File <| tag == 'auto_tag_serial' |> 
  }
