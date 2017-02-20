@@ -21,6 +21,17 @@
 # [auto_tag_serial]
 #   Adds an auto incrimental serial tag to each commit
 #
+# [repo_mask]
+#   The default gitweb umask is 0077, making it unreadable to the
+#   gitweb CGI script, if the apache user and the git user are in
+#   different groups. If in different groups, then change the umask
+#   here to 0027
+#
+# [cgi_bin_dir]
+#   The fully qualified path to the directory that the root gitweb.cgi
+#   script is installed in. You'll need to make sure apache is configured
+#   to allow ExecCGI of this script.
+#
 # === Examples
 #
 #  class { gitweb:
