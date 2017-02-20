@@ -1,0 +1,8 @@
+# Managed by puppet
+#
+# The gitweb config file is a fragment of perl code. You can set variables
+# using "our $variable = value"; text from "#" character until the end of a
+# line is ignored. See perlsyn(1) man page for details.
+
+our $projectroot = <%= @git_root %>;
+$projects_list = $projectroot;
