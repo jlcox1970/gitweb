@@ -119,6 +119,10 @@ class gitweb (
     user    => 'git',
     creates => "${git_home}/.gitolite"
   } ->
+  file { '/etc/gitweb.conf':
+    ensure => present,
+    content => template("${module_name}/gitweb.conf.erb")
+  } ->
   file {'hook functions':
     name    => "${hook}/functions",
     content => template("${module_name}/functions.erb"),
