@@ -76,7 +76,7 @@ class gitweb (
 
   case $::osfamily {
     'Redhat': {
-      if $::operatingsystemrelease >= 7 {
+      if versioncmp("${::operatingsystemmajrelease}.0", '7.0') >= 0 {
         $install_package = 'gitolite3'
       } else {
         $install_package = 'gitolite3'
