@@ -115,8 +115,4 @@ class gitweb (
     content => template("${module_name}/post-receive.erb"),
   } ->
   File <| tag == 'auto_tag_serial' |> ->
-  service {'httpd':
-    ensure => true,
-    enable => true,
-  }
-}
+ }
