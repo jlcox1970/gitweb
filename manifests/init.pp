@@ -121,7 +121,8 @@ class gitweb (
   } ->
   file { '/etc/gitweb.conf':
     ensure => present,
-    content => template("${module_name}/gitweb.conf.erb")
+    content => template("${module_name}/gitweb.conf.erb"),
+    notify  => Service['httpd'],  # Restart apache if it is around
   } ->
   file {'hook functions':
     name    => "${hook}/functions",
