@@ -41,7 +41,6 @@ class gitweb (
   $git_key_type      = 'ssh-rsa',
   $git_home          = '/home/git',
   $auto_tag_serial   = false,
-  $httpd_runas_group = 'apache'
 ){
 
   $git_root = "${git_home}/repositories"
@@ -95,7 +94,6 @@ class gitweb (
     comment    => 'git user',
     managehome => true,
     home       => $git_home,
-    groups     => $httpd_runas_group
   } ->
   file {"${git_home}/install.pub" :
     content => "${git_key_type} ${git_key} ${admin_user}",
