@@ -28,5 +28,5 @@
   "project_page": "https://github.com/jlcox1970/gitweb",
   "source": "https://github.com/jlcox1970/gitweb.git",
   "summary": "Installs Gitolite3 and gitweb onto a server so that you can have a local git server",
-  "version": "1.0.5"
+  "version": "1.0.6"
 }
