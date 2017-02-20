@@ -73,9 +73,22 @@ class gitweb (
     owner   => 'git',
     group   => 'git',
   }
+
+  case $::osfamily {
+    'Redhat': {
+      if $::operatingsystemrelease >= 7 {
+        $install_package = 'gitolite3'
+      } else {
+        $install_package = 'gitolite3'
+      }
+    }
+    default: {
+      $install_package = 'gitolite'
+    }
+  }
+
   package {'gitweb': } ->
-  package {'gitolite' : } ->
-  package {'gitolite3' : } ->
+  package { $install_package : } ->
   user { 'git' :
     ensure     => present,
     comment    => 'git user',
