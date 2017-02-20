@@ -74,7 +74,6 @@ class gitweb (
     group   => 'git',
   }
   package {'gitweb': } ->
-  package {'httpd': } ->
   package {'gitolite' : } ->
   package {'gitolite3' : } ->
   user { 'git' :
