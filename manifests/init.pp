@@ -137,7 +137,7 @@ class gitweb (
   file_line { 'Gitolite config':
     ensure => present,
     path   => "$git_home/.gitolite.rc",
-    line   => "UMASK => $repo_umask",
+    line   => "UMASK => $repo_umask,",
     match  => '^UMASK',
   } ->
   File <| tag == 'auto_tag_serial' |> 
